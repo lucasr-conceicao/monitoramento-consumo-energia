@@ -17,20 +17,15 @@ public class AtualizarTipoCasa implements IAtualizarTipoCasa {
 
     @Override
     public TipoCasaResponse atualizarTipoCasa(TipoCasaRequest request, String tipoCasaId) {
-
         var tipoCasa = montarTipoCasaRequest(request, tipoCasaId);
         repository.save(tipoCasa);
         return converterResponse(tipoCasa);
     }
 
     private TipoCasaConsumoEnergia montarTipoCasaRequest(TipoCasaRequest request, String tipoCasaId) {
-
         var tipoCasa = buscarTipoCasa(tipoCasaId);
-
-        return TipoCasaConsumoEnergia.builder()
-                .tipoCasaId(request.getTipoCasaId())
-                .descricao(request.getDescricao())
-                .build();
+        tipoCasa.setDescricao(request.getDescricao());
+        return tipoCasa;
     }
 
     private TipoCasaConsumoEnergia buscarTipoCasa(String tipoCasa) {
