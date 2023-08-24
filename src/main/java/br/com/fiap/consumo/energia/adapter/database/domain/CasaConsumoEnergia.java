@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -24,7 +26,10 @@ public class CasaConsumoEnergia implements Serializable {
     @JoinColumn(name = "id_endereco")
     private EnderecoConsumoEnergia endereco;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_tipo_casa")
     private TipoCasaConsumoEnergia tipoCasa;
+
+    @OneToMany(mappedBy = "casa", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EletrodomesticoConsumoEnergia> eletrodomesticos = new ArrayList<>();
 }
