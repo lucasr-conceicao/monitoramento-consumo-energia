@@ -37,7 +37,7 @@ public class ControllerHandler {
 
     @ExceptionHandler(RecursoNaoEncontradoException.class)
     private ResponseEntity<JsonHandler> handlerRecursoNaoEncontradoException(Exception ex, HttpServletRequest httpServlet) {
-        return montarRetorno(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.value(), httpServlet.getRequestURI(), ex.getMessage());
+        return montarRetorno(HttpStatus.NOT_FOUND, HttpStatus.NOT_FOUND.value(), httpServlet.getRequestURI(), ex.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
