@@ -22,7 +22,6 @@ public class CadastrarCasa implements ICadastrarCasa {
     private final EnderecoRepository enderecoRepository;
     private final TipoCasaRepository tipoCasaRepository;
 
-
     @Override
     public CasaResponse cadastrarCasa(CasaRequest request) {
         var casa = montarCasaRequest(request);

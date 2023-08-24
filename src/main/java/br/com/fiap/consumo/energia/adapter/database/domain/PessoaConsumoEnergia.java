@@ -1,7 +1,6 @@
 package br.com.fiap.consumo.energia.adapter.database.domain;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import lombok.*;
 
 import java.io.Serializable;
@@ -41,6 +40,12 @@ public class PessoaConsumoEnergia implements Serializable {
 
     @Column(nullable = false)
     private String email;
+
+    @OneToMany(mappedBy = "pessoa1")
+    private Set<ParentescoConsumoEnergia> parentescos1 = new HashSet<>();
+
+    @OneToMany(mappedBy = "pessoa2")
+    private Set<ParentescoConsumoEnergia> parentescos2 = new HashSet<>();
 
     @OneToMany(mappedBy = "pessoas")
     private Set<EletrodomesticoConsumoEnergia> eletrodomesticos = new HashSet<>();
