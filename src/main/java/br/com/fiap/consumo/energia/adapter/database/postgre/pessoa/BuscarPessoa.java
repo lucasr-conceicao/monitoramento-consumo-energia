@@ -28,7 +28,7 @@ public class BuscarPessoa implements IBuscarPessoa {
 
     private Optional<PessoaConsumoEnergia> validarPessoa(Optional<PessoaConsumoEnergia> response, UUID pessoaId) {
         if (!response.isPresent())
-            throw new RecursoNaoEncontradoException("O recurso " + pessoaId + " não foi encontrado na base de dados.");
+            throw new RecursoNaoEncontradoException("O recurso " + pessoaId + " não foi encontrado na tabela tb_pessoa_cnsm_enrg.");
         return response;
     }
 

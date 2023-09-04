@@ -53,6 +53,6 @@ public class AtualizarEndereco implements IAtualizarEndereco {
 
     private EnderecoConsumoEnergia buscarEndereco(UUID enderecoId) {
         return repository.findById(enderecoId).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O endereco " + enderecoId + "nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O endereco " + enderecoId + "nao foi encontrado na tabela tb_endereco_cnsm_enrg."));
     }
 }

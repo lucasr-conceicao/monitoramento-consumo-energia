@@ -44,13 +44,13 @@ public class AtualizarEletrodomestico implements IAtualizarEletrodomestico {
     @Transactional(readOnly = true)
     private EletrodomesticoConsumoEnergia buscarEletrodomestico(UUID eletrodomesticoId) {
         return eletrodomesticoRepository.findById(eletrodomesticoId).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O recurso " + eletrodomesticoId + " nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O recurso " + eletrodomesticoId + " nao foi encontrado na tabela tb_eletrodomestico_cnsm_enrg."));
     }
 
     @Transactional(readOnly = true)
     private CasaConsumoEnergia buscarCasa(UUID casaId) {
         return casaRepository.findById(casaId).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O recurso " + casaId + " nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O recurso " + casaId + " nao foi encontrado na tabela tb_casa_cnsm_enrg."));
     }
 
     private EletrodomesticoResponse converterResponse(EletrodomesticoConsumoEnergia response) {

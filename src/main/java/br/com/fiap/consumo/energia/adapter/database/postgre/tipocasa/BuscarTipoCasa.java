@@ -27,7 +27,7 @@ public class BuscarTipoCasa implements IBuscarTipoCasa {
 
     private Optional<TipoCasaConsumoEnergia> validarTipoCasa(Optional<TipoCasaConsumoEnergia> response, String tipoCasaId) {
         if (!response.isPresent())
-            throw new RecursoNaoEncontradoException("O recurso " + tipoCasaId + " não foi encontrado na base de dados.");
+            throw new RecursoNaoEncontradoException("O recurso " + tipoCasaId + " não foi encontrado na tabela tb_tipo_casa_cnsm_enrg.");
 
         return response;
     }

@@ -27,7 +27,7 @@ public class DeletarEletrodomestico implements IDeletarEletrodomestico {
 
     private Optional<EletrodomesticoConsumoEnergia> validarEletrodomestico(Optional<EletrodomesticoConsumoEnergia> response, UUID casaId) {
         if (!response.isPresent())
-            throw new RecursoNaoEncontradoException("O recurso " + casaId + " não foi encontrado na base de dados.");
+            throw new RecursoNaoEncontradoException("O recurso " + casaId + " não foi encontrado na tabela tb_casa_cnsm_enrg.");
         return response;
     }
 }

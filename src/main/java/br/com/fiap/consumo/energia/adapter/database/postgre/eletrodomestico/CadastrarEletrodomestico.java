@@ -40,7 +40,7 @@ public class CadastrarEletrodomestico implements ICadastrarEletrodomestico {
     @Transactional(readOnly = true)
     private CasaConsumoEnergia buscarCasa(EletrodomesticoRequest request) {
         return casaRepository.findById(request.getCasaId()).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O recurso " + request.getCasaId() + " nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O recurso " + request.getCasaId() + " nao foi encontrado na tb_casa_cnsm_enrg."));
     }
 
     private EletrodomesticoResponse converterResponse(EletrodomesticoConsumoEnergia response) {

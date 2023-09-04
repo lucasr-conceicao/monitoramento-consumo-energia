@@ -36,11 +36,10 @@ OBS 2. Para rodar a aplicação, esta configurado o banco H2. Na aplicação tem
 
 ## 🛠️ Exemplo Json/Rotas de cada API
 
-### API Endereços
+###  API Endereços
 
 - `(POST) API de cadastro de endereço`:
 - `API de cadastro de endereço`: http://localhost:9080/consumo-energia/v1/endereco
-Request body: <br>
 ```JSON
 {
  "rua": "Avenida Paulista",
@@ -65,35 +64,74 @@ Request body: <br>
 
 - `(GET) API de cadastro de endereço`:
 - `API de cadastro de endereço`: http://localhost:9080/consumo-energia/v1/endereco/70eafe16-9d34-4d2a-a817-8eb2caae1545
-
+<br><br>
 - `(DELETE) API de cadastro de endereço`:
 - `API de cadastro de endereço`: http://localhost:9080/consumo-energia/v1/endereco/70eafe16-9d34-4d2a-a817-8eb2caae1545
 
 
 ### API Pessoas
 - `(POST) API de gestão de pessoas`:
-
-Request body: <br>
+- `Rota POST - pessoas`: http://localhost:8080/consumo-energia/v1/pessoa
 ```JSON
 {
  "nome": "Lucas Rocha Conceição",
+ "cpf": "47852526384",
  "data_nascimento": "1998",
- "sexo": "M",
- "grau_parentesco": "Filho",
+ "genero": "Masculino",
+ "email": "lucas@gmail.com",
  "idade": "25"
 }
 ```
-#### 
-- `(POST) API de gestão de eletrodomésticos`:
 
-Request body: <br>
+- `(PUT) API de gestão de pessoas`:
+- `Rota PUT - pessoas`: http://localhost:8080/consumo-energia/v1/pessoa/c2366833-0aaf-4d29-ab35-5e729f6cbd13
+```JSON
+{
+ "nome": "Lucas Rocha Conceição",
+ "cpf": "47852526384",
+ "data_nascimento": "1998",
+ "genero": "Masculino",
+ "email": "lucas@outlook.com.br",
+ "idade": "25"
+}
+```
+- `(GET) API de buscar pessoa`:
+- `Rota GET - pessoas`: http://localhost:8080/consumo-energia/v1/pessoa/c2366833-0aaf-4d29-ab35-5e729f6cbd13
+  <br><br>
+- `(DELETE) API de deletar pessoa`:
+- `Rota DELETE - pessoas`: http://localhost:8080/consumo-energia/v1/pessoa/c2366833-0aaf-4d29-ab35-5e729f6cbd13
+
+
+### API Eletrodomésticos
+- `(POST) API de cadastrar de eletrodomésticos`:
+- `Rota POST - eletrodoméstico`: http://localhost:8080/consumo-energia/v1/eletrodomestico/
 ```JSON
 {
  "nome": "Geladeira",
- "modelo": "Eletrolux",
- "potencia": 110.0,
+ "id_casa": "004a324e-0169-4260-b3c5-8cc04670ddbd",
+ "potencia": 110.0
 }
 ```
+
+- `(PUT) API de atualizar eletrodomésticos`:
+- `Rota PUT - eletrodoméstico`: http://localhost:8080/consumo-energia/v1/eletrodomestico/6261cbbf-5b04-4ba9-b60d-a58cdbaa82c1
+```JSON
+{
+ "nome": "Geladeira",
+ "id_casa": "004a324e-0169-4260-b3c5-8cc04670ddbd",
+ "potencia": 130.0
+}
+```
+- `(GET) API de buscar eletrodoméstico`:
+- `Rota GET - eletrodoméstico`: http://localhost:8080/consumo-energia/v1/eletrodomestico/6261cbbf-5b04-4ba9-b60d-a58cdbaa82c1
+  <br>
+  <br>
+- `(DELETE) API de deletar eletrodoméstico`:
+- `Rota DELETE - eletrodoméstico`: http://localhost:8080/consumo-energia/v1/eletrodomestico/6261cbbf-5b04-4ba9-b60d-a58cdbaa82c1
+
+
+
+
 2. #### Rotas de cada API:
 - `API de cadastro de endereço`: http://localhost:9080/consumo-energia/v1/endereco
 - `API de gestão de pessoas`: http://localhost:9080/consumo-energia/v1/pessoa

@@ -33,7 +33,7 @@ public class AtualizarTipoCasa implements IAtualizarTipoCasa {
     @Transactional(readOnly = true)
     private TipoCasaConsumoEnergia buscarTipoCasa(String tipoCasa) {
         return repository.findById(tipoCasa).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O tipo da Casa nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O recurso " + tipoCasa + " não foi encontrado na tabela tb_tipo_casa_cnsm_enrg."));
     }
 
     private TipoCasaResponse converterResponse(TipoCasaConsumoEnergia response) {

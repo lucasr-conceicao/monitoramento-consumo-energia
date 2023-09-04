@@ -27,7 +27,7 @@ public class DeletarParentesco implements IDeletarParentesco {
 
     private Optional<ParentescoConsumoEnergia> validarParentesco(Optional<ParentescoConsumoEnergia> response, UUID parentescoId) {
         if (!response.isPresent())
-            throw new RecursoNaoEncontradoException("O recurso " + parentescoId + " não foi encontrado na base de dados.");
+            throw new RecursoNaoEncontradoException("O recurso " + parentescoId + " não foi encontrado na tabela tb_parentesco_cnsm_enrg.");
         return response;
     }
 }

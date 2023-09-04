@@ -28,7 +28,7 @@ public class BuscarEletrodomestico implements IBuscarEletrodomestico {
 
     private Optional<EletrodomesticoConsumoEnergia> validarCasa(Optional<EletrodomesticoConsumoEnergia> response, UUID eletrodomesticoId) {
         if (!response.isPresent())
-            throw new RecursoNaoEncontradoException("O recurso " + eletrodomesticoId + " não foi encontrado na base de dados.");
+            throw new RecursoNaoEncontradoException("O recurso " + eletrodomesticoId + " não foi encontrado na tabela tb_eletrodomestico_cnsm_enrg.");
         return response;
     }
 

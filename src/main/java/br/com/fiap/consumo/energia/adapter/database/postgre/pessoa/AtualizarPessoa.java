@@ -53,6 +53,6 @@ public class AtualizarPessoa implements IAtualizarPessoa {
     @Transactional(readOnly = true)
     private PessoaConsumoEnergia buscarPessoa(UUID pessoaId) {
         return repository.findById(pessoaId).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O recurso " + pessoaId + " nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O recurso " + pessoaId + " nao foi encontrado na tabela tb_pessoa_cnsm_enrg."));
     }
 }

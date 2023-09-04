@@ -46,19 +46,19 @@ public class CadastrarCasa implements ICadastrarCasa {
     @Transactional(readOnly = true)
     private EnderecoConsumoEnergia buscarEndereco(CasaRequest request) {
         return enderecoRepository.findById(request.getEnderecoId()).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O recurso " + request.getEnderecoId() + " nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O recurso " + request.getEnderecoId() + " nao foi encontrado na tabela tb_endereco_cnsm_enrg."));
     }
 
     @Transactional(readOnly = true)
     private TipoCasaConsumoEnergia buscarTipoCasa(CasaRequest request) {
         return tipoCasaRepository.findById(request.getTipoCasaId()).orElseThrow(
-                () -> new RecursoNaoEncontradoException("A recurso " + request.getTipoCasaId() + " nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("A recurso " + request.getTipoCasaId() + " nao foi encontrada na tabela tb_tipo_casa_cnsm_enrg."));
     }
 
     @Transactional(readOnly = true)
     private PessoaConsumoEnergia buscarPessoa(CasaRequest request) {
         return pessoaRepository.findById(request.getPessoaId()).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O recurso " + request.getPessoaId() + " nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O recurso " + request.getPessoaId() + " nao foi encontrado na tabela tb_pessoa_cnsm_enrg."));
     }
 
     private CasaResponse converterResponse(CasaConsumoEnergia response) {

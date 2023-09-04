@@ -27,7 +27,7 @@ public class DeletarEndereco implements IDeletarEndereco {
 
     private Optional<EnderecoConsumoEnergia> validaEndereco(Optional<EnderecoConsumoEnergia> response, UUID endereco) {
         if (!response.isPresent())
-            throw new RecursoNaoEncontradoException("O recurso " + endereco + " não foi encontrado na base de dados.");
+            throw new RecursoNaoEncontradoException("O recurso " + endereco + " não foi encontrado na tabela tb_endereco_cnsm_enrg.");
         return response;
     }
 }

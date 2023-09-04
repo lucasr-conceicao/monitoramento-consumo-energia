@@ -15,7 +15,6 @@ import lombok.val;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
 import java.util.UUID;
 
 @Service
@@ -48,19 +47,19 @@ public class AtualizarCasa implements IAtualizarCasa {
     @Transactional(readOnly = true)
     private CasaConsumoEnergia buscarCasa(UUID casaId) {
         return casaRepository.findById(casaId).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O recurso " + casaId + "nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O recurso " + casaId + " nao foi encontrado na tabela tb_casa_cnsm_enrg."));
     }
 
     @Transactional(readOnly = true)
     private EnderecoConsumoEnergia buscarEndereco(UUID enderecoId) {
         return enderecoRepository.findById(enderecoId).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O recurso " + enderecoId + "nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O recurso " + enderecoId + " nao foi encontrado na tabela tb_endereco_cnsm_enrg."));
     }
 
     @Transactional(readOnly = true)
     private TipoCasaConsumoEnergia buscarTipoCasa(String tipoCasa) {
         return tipoCasaRepository.findById(tipoCasa).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O tipo da Casa nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O recurso " + tipoCasa + " nao foi encontrada na tabela tb_tipo_casa_cnsm_enrg."));
     }
 
     private CasaResponse converterResponse(CasaConsumoEnergia response) {

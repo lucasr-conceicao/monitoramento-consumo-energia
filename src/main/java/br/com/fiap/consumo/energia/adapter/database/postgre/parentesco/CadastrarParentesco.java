@@ -46,7 +46,7 @@ public class CadastrarParentesco implements ICadastrarParentesco {
     @Transactional(readOnly = true)
     private PessoaConsumoEnergia buscarPessoa(UUID pessoaId) {
         return pessoaRepository.findById(pessoaId).orElseThrow(
-                () -> new RecursoNaoEncontradoException("A recurso " + pessoaId + " nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("A recurso " + pessoaId + " nao foi encontrado na tabela tb_pessoa_cnsm_enrg."));
     }
 
     private ParentescoResponse converterResponse(ParentescoConsumoEnergia response) {

@@ -35,7 +35,7 @@ public class AtualizarParentesco implements IAtualizarParentesco {
     @Transactional(readOnly = true)
     private ParentescoConsumoEnergia buscarParentesco(UUID parentescoId) {
         return repository.findById(parentescoId).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O recurso " + parentescoId + " nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O recurso " + parentescoId + " nao foi encontrado na tabela tb_parentesco_cnsm_enrg."));
     }
 
     private ParentescoResponse converterResponse(ParentescoConsumoEnergia response) {
