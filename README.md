@@ -50,7 +50,7 @@ OBS 2. Para rodar a aplicação, esta configurado o banco H2. Na aplicação tem
 }
 ```
 
-- `(PUT) API de cadastro de endereço`:
+- `(PUT) API de atualizar endereço`:
 - `API de cadastro de endereço`: http://localhost:9080/consumo-energia/v1/endereco/70eafe16-9d34-4d2a-a817-8eb2caae1545
 ```JSON
 {
@@ -62,16 +62,17 @@ OBS 2. Para rodar a aplicação, esta configurado o banco H2. Na aplicação tem
 }
 ```
 
-- `(GET) API de cadastro de endereço`:
+- `(GET) API de buscar endereço`:
 - `API de cadastro de endereço`: http://localhost:9080/consumo-energia/v1/endereco/70eafe16-9d34-4d2a-a817-8eb2caae1545
-<br><br>
-- `(DELETE) API de cadastro de endereço`:
+   <br>
+   <br>
+- `(DELETE) API de deletar endereço`:
 - `API de cadastro de endereço`: http://localhost:9080/consumo-energia/v1/endereco/70eafe16-9d34-4d2a-a817-8eb2caae1545
 
 
 ### API Pessoas
-- `(POST) API de gestão de pessoas`:
-- `Rota POST - pessoas`: http://localhost:8080/consumo-energia/v1/pessoa
+- `(POST) API de cadastrar pessoas`:
+- `Rota POST - pessoas`: http://localhost:9080/consumo-energia/v1/pessoa
 ```JSON
 {
  "nome": "Lucas Rocha Conceição",
@@ -83,8 +84,8 @@ OBS 2. Para rodar a aplicação, esta configurado o banco H2. Na aplicação tem
 }
 ```
 
-- `(PUT) API de gestão de pessoas`:
-- `Rota PUT - pessoas`: http://localhost:8080/consumo-energia/v1/pessoa/c2366833-0aaf-4d29-ab35-5e729f6cbd13
+- `(PUT) API de atualizar pessoas`:
+- `Rota PUT - pessoas`: http://localhost:9080/consumo-energia/v1/pessoa/c2366833-0aaf-4d29-ab35-5e729f6cbd13
 ```JSON
 {
  "nome": "Lucas Rocha Conceição",
@@ -96,15 +97,98 @@ OBS 2. Para rodar a aplicação, esta configurado o banco H2. Na aplicação tem
 }
 ```
 - `(GET) API de buscar pessoa`:
-- `Rota GET - pessoas`: http://localhost:8080/consumo-energia/v1/pessoa/c2366833-0aaf-4d29-ab35-5e729f6cbd13
-  <br><br>
+- `Rota GET - pessoas`: http://localhost:9080/consumo-energia/v1/pessoa/c2366833-0aaf-4d29-ab35-5e729f6cbd13
+  <br>
+  <br>
 - `(DELETE) API de deletar pessoa`:
-- `Rota DELETE - pessoas`: http://localhost:8080/consumo-energia/v1/pessoa/c2366833-0aaf-4d29-ab35-5e729f6cbd13
+- `Rota DELETE - pessoas`: http://localhost:9080/consumo-energia/v1/pessoa/c2366833-0aaf-4d29-ab35-5e729f6cbd13
+
+
+### API Parentesco
+- `(POST) API de cadastro de parentesco`:
+- `Rota POST - parentesco`: http://localhost:9080/consumo-energia/v1/parentesco
+```JSON
+{
+  "descricao_relacionamento": "Filho",
+  "id_pessoa1": "41b65c55-52ec-4409-bdd0-59bc04034faa",
+  "id_pessoa2": "c2366833-0aaf-4d29-ab35-5e729f6cbd13"
+}
+```
+
+- `(PUT) API de atualizar parentesco`:
+- `Rota PUT - parentesco`: http://localhost:9080/consumo-energia/v1/parentesco/48be8a94-7070-4e75-8ff4-b901bb2a22b2
+```JSON
+{
+  "descricao_relacionamento": "Filha",
+  "id_pessoa1": "41b65c55-52ec-4409-bdd0-59bc04034faa",
+  "id_pessoa2": "c2366833-0aaf-4d29-ab35-5e729f6cbd13"
+}
+```
+- `(GET) API de buscar parentesco`:
+- `Rota GET - parentesco`: http://localhost:9080/consumo-energia/v1/parentesco/48be8a94-7070-4e75-8ff4-b901bb2a22b2
+  <br>
+  <br>
+- `(DELETE) API de deletar parentesco`:
+- `Rota DELETE - parentesco`: http://localhost:9080/consumo-energia/v1/parentesco/48be8a94-7070-4e75-8ff4-b901bb2a22b2
+
+
+### API Tipo Casa - Tabela dominio
+- `(POST) API de cadastro do tipo da casa`:
+- `Rota POST - tipo casa`: http://localhost:8080/consumo-energia/v1/tipo_casa
+```JSON
+{
+  "descricao_relacionamento": "Filho",
+  "id_pessoa1": "41b65c55-52ec-4409-bdd0-59bc04034faa",
+  "id_pessoa2": "c2366833-0aaf-4d29-ab35-5e729f6cbd13"
+}
+```
+
+- `(PUT) API de atualizar tipo da casa`:
+- `Rota PUT - tipo casa`: http://localhost:8080/consumo-energia/v1/tipo_casa/4
+```JSON
+{
+  "descricao_relacionamento": "Filha",
+  "id_pessoa1": "41b65c55-52ec-4409-bdd0-59bc04034faa",
+  "id_pessoa2": "c2366833-0aaf-4d29-ab35-5e729f6cbd13"
+}
+```
+- `(GET) API de buscar tipo da casa`:
+- `Rota GET - tipo casa`: http://localhost:8080/consumo-energia/v1/tipo_casa/4
+  <br>
+  <br>
+- `(DELETE) API de deletar tipo da casa`:
+- `Rota DELETE - tipo casa`: http://localhost:8080/consumo-energia/v1/tipo_casa/4
+
+### API Casa
+- `(POST) API de cadastro de casa`:
+- `Rota POST - casa`: http://localhost:8080/consumo-energia/v1/casa
+```JSON
+{
+ "nome": "Geladeira",
+ "id_casa": "004a324e-0169-4260-b3c5-8cc04670ddbd",
+ "potencia": 110.0
+}
+```
+- `(PUT) API de atualizar casa`:
+- `Rota PUT - casa`: http://localhost:8080/consumo-energia/v1/casa/d65e3601-825a-4223-8011-d3a4b831a10f
+```JSON
+{
+ "nome": "Geladeira",
+ "id_casa": "004a324e-0169-4260-b3c5-8cc04670ddbd",
+ "potencia": 130.0
+}
+```
+- `(GET) API de buscar casa`:
+- `Rota GET - casa`: http://localhost:8080/consumo-energia/v1/casa/d65e3601-825a-4223-8011-d3a4b831a10f
+  <br>
+  <br>
+- `(DELETE) API de deletar casa`:
+- `Rota DELETE - casa`: http://localhost:8080/consumo-energia/v1/casa/d65e3601-825a-4223-8011-d3a4b831a10f
 
 
 ### API Eletrodomésticos
 - `(POST) API de cadastrar de eletrodomésticos`:
-- `Rota POST - eletrodoméstico`: http://localhost:8080/consumo-energia/v1/eletrodomestico/
+- `Rota POST - eletrodoméstico`: http://localhost:9080/consumo-energia/v1/eletrodomestico/
 ```JSON
 {
  "nome": "Geladeira",
@@ -114,7 +198,7 @@ OBS 2. Para rodar a aplicação, esta configurado o banco H2. Na aplicação tem
 ```
 
 - `(PUT) API de atualizar eletrodomésticos`:
-- `Rota PUT - eletrodoméstico`: http://localhost:8080/consumo-energia/v1/eletrodomestico/6261cbbf-5b04-4ba9-b60d-a58cdbaa82c1
+- `Rota PUT - eletrodoméstico`: http://localhost:9080/consumo-energia/v1/eletrodomestico/6261cbbf-5b04-4ba9-b60d-a58cdbaa82c1
 ```JSON
 {
  "nome": "Geladeira",
@@ -123,16 +207,10 @@ OBS 2. Para rodar a aplicação, esta configurado o banco H2. Na aplicação tem
 }
 ```
 - `(GET) API de buscar eletrodoméstico`:
-- `Rota GET - eletrodoméstico`: http://localhost:8080/consumo-energia/v1/eletrodomestico/6261cbbf-5b04-4ba9-b60d-a58cdbaa82c1
+- `Rota GET - eletrodoméstico`: http://localhost:9080/consumo-energia/v1/eletrodomestico/6261cbbf-5b04-4ba9-b60d-a58cdbaa82c1
   <br>
   <br>
 - `(DELETE) API de deletar eletrodoméstico`:
-- `Rota DELETE - eletrodoméstico`: http://localhost:8080/consumo-energia/v1/eletrodomestico/6261cbbf-5b04-4ba9-b60d-a58cdbaa82c1
+- `Rota DELETE - eletrodoméstico`: http://localhost:9080/consumo-energia/v1/eletrodomestico/6261cbbf-5b04-4ba9-b60d-a58cdbaa82c1
 
 
-
-
-2. #### Rotas de cada API:
-- `API de cadastro de endereço`: http://localhost:9080/consumo-energia/v1/endereco
-- `API de gestão de pessoas`: http://localhost:9080/consumo-energia/v1/pessoa
-- `API de gestão de eletrodomésticos`: http://localhost:9080/consumo-energia/v1/eletrodomestico
