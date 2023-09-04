@@ -137,19 +137,16 @@ OBS 2. Para rodar a aplicação, esta configurado o banco H2. Na aplicação tem
 - `Rota POST - tipo casa`: http://localhost:8080/consumo-energia/v1/tipo_casa
 ```JSON
 {
-  "descricao_relacionamento": "Filho",
-  "id_pessoa1": "41b65c55-52ec-4409-bdd0-59bc04034faa",
-  "id_pessoa2": "c2366833-0aaf-4d29-ab35-5e729f6cbd13"
+  "id_tipo_casa": "2",
+  "descricao": "Apartamento"
 }
 ```
-
 - `(PUT) API de atualizar tipo da casa`:
 - `Rota PUT - tipo casa`: http://localhost:8080/consumo-energia/v1/tipo_casa/4
 ```JSON
 {
-  "descricao_relacionamento": "Filha",
-  "id_pessoa1": "41b65c55-52ec-4409-bdd0-59bc04034faa",
-  "id_pessoa2": "c2366833-0aaf-4d29-ab35-5e729f6cbd13"
+  "id_tipo_casa": "2",
+  "descricao": "Studio"
 }
 ```
 - `(GET) API de buscar tipo da casa`:
@@ -164,18 +161,18 @@ OBS 2. Para rodar a aplicação, esta configurado o banco H2. Na aplicação tem
 - `Rota POST - casa`: http://localhost:8080/consumo-energia/v1/casa
 ```JSON
 {
- "nome": "Geladeira",
- "id_casa": "004a324e-0169-4260-b3c5-8cc04670ddbd",
- "potencia": 110.0
+  "id_endereco": "09c51791-2eb7-4a56-8234-69f90abe73ed",
+  "id_tipo_casa": "2",
+  "id_pessoa": "1976a73c-e998-4663-a392-46221e81a8bb"
 }
 ```
 - `(PUT) API de atualizar casa`:
 - `Rota PUT - casa`: http://localhost:8080/consumo-energia/v1/casa/d65e3601-825a-4223-8011-d3a4b831a10f
 ```JSON
 {
- "nome": "Geladeira",
- "id_casa": "004a324e-0169-4260-b3c5-8cc04670ddbd",
- "potencia": 130.0
+  "id_endereco": "09c51791-2eb7-4a56-8234-69f90abe73ed",
+  "id_tipo_casa": "4",
+  "id_pessoa": "1976a73c-e998-4663-a392-46221e81a8bb"
 }
 ```
 - `(GET) API de buscar casa`:
