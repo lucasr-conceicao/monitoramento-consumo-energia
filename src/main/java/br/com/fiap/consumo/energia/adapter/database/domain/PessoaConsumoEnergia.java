@@ -4,10 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Getter
 @Setter
@@ -41,12 +38,12 @@ public class PessoaConsumoEnergia implements Serializable {
     @Column(nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "pessoa1")
+    @OneToMany(mappedBy = "pessoa1", cascade = CascadeType.ALL)
     private Set<ParentescoConsumoEnergia> parentescos1 = new HashSet<>();
 
-    @OneToMany(mappedBy = "pessoa2")
+    @OneToMany(mappedBy = "pessoa2", cascade = CascadeType.ALL)
     private Set<ParentescoConsumoEnergia> parentescos2 = new HashSet<>();
 
-    @OneToMany(mappedBy = "pessoas")
-    private Set<EletrodomesticoConsumoEnergia> eletrodomesticos = new HashSet<>();
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CasaConsumoEnergia> casa = new ArrayList<>();
 }
