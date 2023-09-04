@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,4 +22,7 @@ public class TipoCasaConsumoEnergia implements Serializable {
 
     @Column(nullable = false)
     private String descricao;
+
+    @OneToMany(mappedBy = "tipoCasa", cascade = CascadeType.ALL)
+    private List<CasaConsumoEnergia> casa = new ArrayList<>();
 }

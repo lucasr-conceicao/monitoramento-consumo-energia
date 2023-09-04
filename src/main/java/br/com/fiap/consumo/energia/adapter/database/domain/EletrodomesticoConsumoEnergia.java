@@ -5,8 +5,6 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -32,12 +30,4 @@ public class EletrodomesticoConsumoEnergia implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_casa")
     private CasaConsumoEnergia casa;
-
-    @ManyToMany
-    @JoinTable(
-            name = "tb_pessoa_eletrodomestico_cnsm_enrg",
-            joinColumns = @JoinColumn(name = "id_pessoa"),
-            inverseJoinColumns = @JoinColumn(name = "id_eletrodomestico")
-    )
-    private Set<PessoaConsumoEnergia> pessoas = new HashSet<>();
 }

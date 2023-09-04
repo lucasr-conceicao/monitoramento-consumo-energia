@@ -26,10 +26,14 @@ public class CasaConsumoEnergia implements Serializable {
     @JoinColumn(name = "id_endereco")
     private EnderecoConsumoEnergia endereco;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_tipo_casa")
     private TipoCasaConsumoEnergia tipoCasa;
 
-    @OneToMany(mappedBy = "casa", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_pessoa")
+    private PessoaConsumoEnergia pessoa;
+
+    @OneToMany(mappedBy = "casa", cascade = CascadeType.ALL)
     private List<EletrodomesticoConsumoEnergia> eletrodomesticos = new ArrayList<>();
 }
