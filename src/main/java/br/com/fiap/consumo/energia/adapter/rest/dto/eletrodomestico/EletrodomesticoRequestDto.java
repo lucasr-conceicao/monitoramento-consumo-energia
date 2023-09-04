@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.math.BigDecimal;
+
 import java.util.UUID;
 
 @Getter
@@ -19,4 +20,7 @@ public class EletrodomesticoRequestDto {
 
     @JsonProperty("id_casa")
     private UUID casaId;
+
+    @JsonProperty("id_pessoa")
+    private UUID pessoa;
 }

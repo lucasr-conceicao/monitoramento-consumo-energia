@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.math.BigDecimal;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -13,4 +14,5 @@ public class EletrodomesticoRequest {
     private String nome;
     private BigDecimal potencia;
     private UUID casaId;
+    private UUID pessoaId;
 }

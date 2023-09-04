@@ -8,6 +8,7 @@ import br.com.fiap.consumo.energia.usecase.database.casa.IBuscarCasa;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -35,7 +36,7 @@ public class BuscarCasa implements IBuscarCasa {
         return CasaResponse.builder()
                 .casaId(response.get().getCasaId())
                 .enderecoId(response.get().getEndereco().getEnderecoId())
-                .tipoCasaId(response.get().getTipoCasa().getTipoCasaId())
+                .tipoCasaId((response.get().getTipoCasa().getTipoCasaId()))
                 .build();
 
     }
