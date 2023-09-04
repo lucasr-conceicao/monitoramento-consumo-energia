@@ -11,6 +11,7 @@ import br.com.fiap.consumo.energia.usecase.database.eletrodomestico.ICadastrarEl
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +21,7 @@ public class CadastrarEletrodomestico implements ICadastrarEletrodomestico {
     private final CasaRepository casaRepository;
 
     @Override
+    @Transactional
     public EletrodomesticoResponse cadastrarEletrodomestico(EletrodomesticoRequest request) {
         var eletrodomestico = montarEletrodomesticoRequest(request);
         eletrodomesticoRepository.save(eletrodomestico);
@@ -35,9 +37,10 @@ public class CadastrarEletrodomestico implements ICadastrarEletrodomestico {
                 .build();
     }
 
+    @Transactional(readOnly = true)
     private CasaConsumoEnergia buscarCasa(EletrodomesticoRequest request) {
         return casaRepository.findById(request.getCasaId()).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O recurso nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O recurso " + request.getCasaId() + " nao foi encontrado na base de dados."));
     }
 
     private EletrodomesticoResponse converterResponse(EletrodomesticoConsumoEnergia response) {

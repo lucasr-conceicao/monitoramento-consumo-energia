@@ -11,6 +11,7 @@ import br.com.fiap.consumo.energia.usecase.database.parentesco.ParentescoRespons
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -22,6 +23,7 @@ public class CadastrarParentesco implements ICadastrarParentesco {
     private final PessoaRepository pessoaRepository;
 
     @Override
+    @Transactional
     public ParentescoResponse cadastrarParentesco(ParentescoRequest request) {
         var parentesco = montarParentescoRequest(request);
         parentescoRepository.save(parentesco);
@@ -41,9 +43,10 @@ public class CadastrarParentesco implements ICadastrarParentesco {
                 .build();
     }
 
+    @Transactional(readOnly = true)
     private PessoaConsumoEnergia buscarPessoa(UUID pessoaId) {
         return pessoaRepository.findById(pessoaId).orElseThrow(
-                () -> new RecursoNaoEncontradoException("A recurso nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("A recurso " + pessoaId + " nao foi encontrado na base de dados."));
     }
 
     private ParentescoResponse converterResponse(ParentescoConsumoEnergia response) {

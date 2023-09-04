@@ -30,7 +30,7 @@ public class CasaConsumoEnergia implements Serializable {
     @JoinColumn(name = "id_tipo_casa")
     private TipoCasaConsumoEnergia tipoCasa;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_pessoa")
     private PessoaConsumoEnergia pessoa;
 

@@ -7,8 +7,8 @@ import br.com.fiap.consumo.energia.usecase.database.casa.CasaResponse;
 import br.com.fiap.consumo.energia.usecase.database.casa.IBuscarCasa;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -19,6 +19,7 @@ public class BuscarCasa implements IBuscarCasa {
     private final CasaRepository repository;
 
     @Override
+    @Transactional
     public CasaResponse buscarCasa(UUID casaId) {
         var casa = repository.findById(casaId);
         var casaValidado = validarCasa(casa, casaId);
@@ -28,7 +29,6 @@ public class BuscarCasa implements IBuscarCasa {
     private Optional<CasaConsumoEnergia> validarCasa(Optional<CasaConsumoEnergia> response, UUID casaId) {
         if (!response.isPresent())
             throw new RecursoNaoEncontradoException("O recurso " + casaId + " não foi encontrado na base de dados.");
-
         return response;
     }
 

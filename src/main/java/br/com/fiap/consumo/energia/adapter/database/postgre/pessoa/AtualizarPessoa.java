@@ -19,8 +19,8 @@ public class AtualizarPessoa implements IAtualizarPessoa {
     private final PessoaRepository repository;
 
     @Override
+    @Transactional
     public PessoaResponse atualizarPessoa(PessoaRequest request, UUID pessoaId) {
-
         var pessoa = montarPessoaRequest(request, pessoaId);
         repository.save(pessoa);
         return converterResponse(pessoa);

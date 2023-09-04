@@ -1,6 +1,9 @@
 package br.com.fiap.consumo.energia.adapter.database.postgre.casa;
 
-import br.com.fiap.consumo.energia.adapter.database.domain.*;
+import br.com.fiap.consumo.energia.adapter.database.domain.CasaConsumoEnergia;
+import br.com.fiap.consumo.energia.adapter.database.domain.EnderecoConsumoEnergia;
+import br.com.fiap.consumo.energia.adapter.database.domain.PessoaConsumoEnergia;
+import br.com.fiap.consumo.energia.adapter.database.domain.TipoCasaConsumoEnergia;
 import br.com.fiap.consumo.energia.adapter.database.exceptions.RecursoNaoEncontradoException;
 import br.com.fiap.consumo.energia.adapter.database.repository.*;
 import br.com.fiap.consumo.energia.usecase.database.casa.CasaRequest;
@@ -43,19 +46,19 @@ public class CadastrarCasa implements ICadastrarCasa {
     @Transactional(readOnly = true)
     private EnderecoConsumoEnergia buscarEndereco(CasaRequest request) {
         return enderecoRepository.findById(request.getEnderecoId()).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O recurso nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O recurso " + request.getEnderecoId() + " nao foi encontrado na base de dados."));
     }
 
     @Transactional(readOnly = true)
     private TipoCasaConsumoEnergia buscarTipoCasa(CasaRequest request) {
         return tipoCasaRepository.findById(request.getTipoCasaId()).orElseThrow(
-                () -> new RecursoNaoEncontradoException("A recurso nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("A recurso " + request.getTipoCasaId() + " nao foi encontrado na base de dados."));
     }
 
     @Transactional(readOnly = true)
     private PessoaConsumoEnergia buscarPessoa(CasaRequest request) {
         return pessoaRepository.findById(request.getPessoaId()).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O recurso nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O recurso " + request.getPessoaId() + " nao foi encontrado na base de dados."));
     }
 
     private CasaResponse converterResponse(CasaConsumoEnergia response) {

@@ -7,6 +7,7 @@ import br.com.fiap.consumo.energia.usecase.database.tipocasa.TipoCasaRequest;
 import br.com.fiap.consumo.energia.usecase.database.tipocasa.TipoCasaResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,6 +16,7 @@ public class CadastrarTipoCasa implements ICadastrarTipoCasa {
     private final TipoCasaRepository repository;
 
     @Override
+    @Transactional
     public TipoCasaResponse cadastrarTipoCasa(TipoCasaRequest request) {
         var tipoCasa = montarTipoCasaRequest(request);
         repository.save(tipoCasa);

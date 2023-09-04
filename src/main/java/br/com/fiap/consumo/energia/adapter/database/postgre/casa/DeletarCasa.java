@@ -6,6 +6,7 @@ import br.com.fiap.consumo.energia.adapter.database.repository.CasaRepository;
 import br.com.fiap.consumo.energia.usecase.database.casa.IDeletarCasa;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -17,6 +18,7 @@ public class DeletarCasa implements IDeletarCasa {
     private final CasaRepository repository;
 
     @Override
+    @Transactional
     public void deletarCasa(UUID casaId) {
         var casa = repository.findById(casaId);
         var casaValidada = validarCasa(casa, casaId);

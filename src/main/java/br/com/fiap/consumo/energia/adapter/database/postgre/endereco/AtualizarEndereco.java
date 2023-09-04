@@ -8,6 +8,7 @@ import br.com.fiap.consumo.energia.usecase.database.endereco.EnderecoResponse;
 import br.com.fiap.consumo.energia.usecase.database.endereco.IAtualizarEndereco;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -18,19 +19,15 @@ public class AtualizarEndereco implements IAtualizarEndereco {
     private final EnderecoRepository repository;
 
     @Override
+    @Transactional
     public EnderecoResponse atualizarEndereco(EnderecoRequest request, UUID enderecoId) {
-
         var endereco = montarEndereco(request, enderecoId);
-
         repository.save(endereco);
-
         return converterResponse(endereco);
     }
 
     private EnderecoConsumoEnergia montarEndereco(EnderecoRequest request, UUID enderecoId) {
-
         var endereco = buscarEndereco(enderecoId);
-
         endereco.setRua(request.getRua());
         endereco.setNumero(request.getNumero());
         endereco.setCep(request.getCep());
@@ -38,7 +35,6 @@ public class AtualizarEndereco implements IAtualizarEndereco {
         endereco.setCidade(request.getCidade());
         endereco.setEstado(request.getEstado());
         endereco.setPais(request.getPais());
-
         return endereco;
     }
 
@@ -57,6 +53,6 @@ public class AtualizarEndereco implements IAtualizarEndereco {
 
     private EnderecoConsumoEnergia buscarEndereco(UUID enderecoId) {
         return repository.findById(enderecoId).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O endereco nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O endereco " + enderecoId + "nao foi encontrado na base de dados."));
     }
 }

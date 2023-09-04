@@ -7,6 +7,7 @@ import br.com.fiap.consumo.energia.usecase.database.pessoa.PessoaRequest;
 import br.com.fiap.consumo.energia.usecase.database.pessoa.PessoaResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,6 +16,7 @@ public class CadastrarPessoa implements ICadastrarPessoa {
     private final PessoaRepository repository;
 
     @Override
+    @Transactional
     public PessoaResponse cadastrarPessoa(PessoaRequest request) {
         var parentesco = montarParentescoRequest(request);
         repository.save(parentesco);

@@ -7,6 +7,7 @@ import br.com.fiap.consumo.energia.usecase.database.eletrodomestico.Eletrodomest
 import br.com.fiap.consumo.energia.usecase.database.eletrodomestico.IBuscarEletrodomestico;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -18,6 +19,7 @@ public class BuscarEletrodomestico implements IBuscarEletrodomestico {
     private final EletrodomesticoRepository repository;
 
     @Override
+    @Transactional
     public EletrodomesticoResponse buscarEletrodomestico(UUID eletrodomesticoId) {
         var eletrodomestico = repository.findById(eletrodomesticoId);
         var eletrodomesticoValidado = validarCasa(eletrodomestico, eletrodomesticoId);
@@ -27,7 +29,6 @@ public class BuscarEletrodomestico implements IBuscarEletrodomestico {
     private Optional<EletrodomesticoConsumoEnergia> validarCasa(Optional<EletrodomesticoConsumoEnergia> response, UUID eletrodomesticoId) {
         if (!response.isPresent())
             throw new RecursoNaoEncontradoException("O recurso " + eletrodomesticoId + " não foi encontrado na base de dados.");
-
         return response;
     }
 

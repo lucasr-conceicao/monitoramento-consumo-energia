@@ -11,6 +11,7 @@ import br.com.fiap.consumo.energia.usecase.database.eletrodomestico.IAtualizarEl
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -22,15 +23,14 @@ public class AtualizarEletrodomestico implements IAtualizarEletrodomestico {
     private final CasaRepository casaRepository;
 
     @Override
+    @Transactional
     public EletrodomesticoResponse atualizarEletrodomestico(EletrodomesticoRequest request, UUID eletrodomesticoId) {
-
         var eletrodomestico = montarEletrodomesticoRequest(request, eletrodomesticoId);
         eletrodomesticoRepository.save(eletrodomestico);
         return converterResponse(eletrodomestico);
     }
 
     private EletrodomesticoConsumoEnergia montarEletrodomesticoRequest(EletrodomesticoRequest request, UUID eletrodomesticoId) {
-
         var eletrodomestico = buscarEletrodomestico(eletrodomesticoId);
         val casa = buscarCasa(request.getCasaId());
 
@@ -41,14 +41,16 @@ public class AtualizarEletrodomestico implements IAtualizarEletrodomestico {
         return eletrodomestico;
     }
 
+    @Transactional(readOnly = true)
     private EletrodomesticoConsumoEnergia buscarEletrodomestico(UUID eletrodomesticoId) {
         return eletrodomesticoRepository.findById(eletrodomesticoId).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O recurso nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O recurso " + eletrodomesticoId + " nao foi encontrado na base de dados."));
     }
 
+    @Transactional(readOnly = true)
     private CasaConsumoEnergia buscarCasa(UUID casaId) {
         return casaRepository.findById(casaId).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O recurso nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O recurso " + casaId + " nao foi encontrado na base de dados."));
     }
 
     private EletrodomesticoResponse converterResponse(EletrodomesticoConsumoEnergia response) {

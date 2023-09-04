@@ -1,13 +1,7 @@
 package br.com.fiap.consumo.energia.adapter.rest.controller;
 
-import br.com.fiap.consumo.energia.adapter.rest.dto.endereco.EnderecoRequestDto;
-import br.com.fiap.consumo.energia.adapter.rest.dto.endereco.EnderecoResponseDto;
-import br.com.fiap.consumo.energia.adapter.rest.dto.parentesco.ParentescoRequestDto;
-import br.com.fiap.consumo.energia.adapter.rest.dto.parentesco.ParentescoResponseDto;
 import br.com.fiap.consumo.energia.adapter.rest.dto.pessoa.PessoaRequestDto;
 import br.com.fiap.consumo.energia.adapter.rest.dto.pessoa.PessoaResponseDto;
-import br.com.fiap.consumo.energia.usecase.database.parentesco.ParentescoRequest;
-import br.com.fiap.consumo.energia.usecase.database.parentesco.ParentescoResponse;
 import br.com.fiap.consumo.energia.usecase.database.pessoa.*;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;

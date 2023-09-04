@@ -1,14 +1,13 @@
 package br.com.fiap.consumo.energia.adapter.database.postgre.parentesco;
 
 import br.com.fiap.consumo.energia.adapter.database.domain.ParentescoConsumoEnergia;
-import br.com.fiap.consumo.energia.adapter.database.domain.PessoaConsumoEnergia;
 import br.com.fiap.consumo.energia.adapter.database.exceptions.RecursoNaoEncontradoException;
 import br.com.fiap.consumo.energia.adapter.database.repository.ParentescoRepository;
 import br.com.fiap.consumo.energia.usecase.database.parentesco.IBuscarParentesco;
 import br.com.fiap.consumo.energia.usecase.database.parentesco.ParentescoResponse;
-import br.com.fiap.consumo.energia.usecase.database.pessoa.PessoaResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -20,6 +19,7 @@ public class BuscarParentesco implements IBuscarParentesco {
     private final ParentescoRepository repository;
 
     @Override
+    @Transactional
     public ParentescoResponse buscarParentesco(UUID parentescoId) {
         var parentesco = repository.findById(parentescoId);
         var parentescoValidado = validarParentesco(parentesco, parentescoId);

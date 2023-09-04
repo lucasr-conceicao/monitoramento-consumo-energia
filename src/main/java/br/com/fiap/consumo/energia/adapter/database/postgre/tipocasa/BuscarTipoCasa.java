@@ -7,6 +7,7 @@ import br.com.fiap.consumo.energia.usecase.database.tipocasa.IBuscarTipoCasa;
 import br.com.fiap.consumo.energia.usecase.database.tipocasa.TipoCasaResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -17,6 +18,7 @@ public class BuscarTipoCasa implements IBuscarTipoCasa {
     private final TipoCasaRepository repository;
 
     @Override
+    @Transactional
     public TipoCasaResponse buscarTipoCasa(String tipoCasaId) {
         var tipoCasa = repository.findById(tipoCasaId);
         var tipoCasaValidado = validarTipoCasa(tipoCasa, tipoCasaId);

@@ -13,6 +13,7 @@ import br.com.fiap.consumo.energia.usecase.database.casa.IAtualizarCasa;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.UUID;
@@ -26,6 +27,7 @@ public class AtualizarCasa implements IAtualizarCasa {
     private final TipoCasaRepository tipoCasaRepository;
 
     @Override
+    @Transactional
     public CasaResponse atualizarCasa(CasaRequest request, UUID casaId) {
         var casa = montarCasaRequest(request, casaId);
         casaRepository.save(casa);
@@ -33,7 +35,6 @@ public class AtualizarCasa implements IAtualizarCasa {
     }
 
     private CasaConsumoEnergia montarCasaRequest(CasaRequest request, UUID casaId) {
-
         var casa = buscarCasa(casaId);
         val endereco = buscarEndereco(request.getEnderecoId());
         val tipoCasa = buscarTipoCasa(request.getTipoCasaId());
@@ -44,16 +45,19 @@ public class AtualizarCasa implements IAtualizarCasa {
         return casa;
     }
 
+    @Transactional(readOnly = true)
     private CasaConsumoEnergia buscarCasa(UUID casaId) {
         return casaRepository.findById(casaId).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O recurso nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O recurso " + casaId + "nao foi encontrado na base de dados."));
     }
 
+    @Transactional(readOnly = true)
     private EnderecoConsumoEnergia buscarEndereco(UUID enderecoId) {
         return enderecoRepository.findById(enderecoId).orElseThrow(
-                () -> new RecursoNaoEncontradoException("O recurso nao foi encontrado na base de dados."));
+                () -> new RecursoNaoEncontradoException("O recurso " + enderecoId + "nao foi encontrado na base de dados."));
     }
 
+    @Transactional(readOnly = true)
     private TipoCasaConsumoEnergia buscarTipoCasa(String tipoCasa) {
         return tipoCasaRepository.findById(tipoCasa).orElseThrow(
                 () -> new RecursoNaoEncontradoException("O tipo da Casa nao foi encontrado na base de dados."));
