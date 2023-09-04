@@ -26,6 +26,7 @@
 ![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/afc0f789-f7d9-4c34-b35e-eff6e7c2486f)
 
 OBS 1. Não foi desenvolvido a entidade usuário.
+<br>
 OBS 2. Para rodar a aplicação, esta configurado o banco H2. Na aplicação tem um script que vai carregar a tabela de dominio Tipo_Casa 
 
 1. #### Endereço - Casa: uma Casa pode ter somente um endereço
