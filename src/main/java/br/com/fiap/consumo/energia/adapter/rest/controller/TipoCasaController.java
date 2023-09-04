@@ -8,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import static br.com.fiap.consumo.energia.adapter.util.ValidarCorrelationId.validarCorrelationId;
-
 @RestController
 @RequestMapping("/consumo-energia/v1")
 @RequiredArgsConstructor
@@ -21,34 +19,26 @@ public class TipoCasaController {
     private final IBuscarTipoCasa buscarTipoCasa;
 
     @PostMapping("/tipo_casa")
-    public ResponseEntity<TipoCasaResponseDto> cadastrarEndereco(@RequestBody TipoCasaRequestDto requestDto,
-                                                                 @RequestHeader(value = "correlationId", required = false) String correlationId) {
-        var correlationIdVlidado = validarCorrelationId(correlationId);
+    public ResponseEntity<TipoCasaResponseDto> cadastrarEndereco(@RequestBody TipoCasaRequestDto requestDto) {
         var response = cadastrarTipoCasa.cadastrarTipoCasa(montarRequest(requestDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(converterResponse(response));
     }
 
     @GetMapping("/tipo_casa/{tipoCasaId}")
-    public ResponseEntity<TipoCasaResponseDto> buscarEnderecoId(@PathVariable(value = "tipoCasaId") String tipoCasaId,
-                                                                @RequestHeader(value = "correlationId", required = false) String correlationId) {
-        var correlationIdVlidado = validarCorrelationId(correlationId);
+    public ResponseEntity<TipoCasaResponseDto> buscarEnderecoId(@PathVariable(value = "tipoCasaId") String tipoCasaId) {
         var response = buscarTipoCasa.buscarTipoCasa(tipoCasaId);
         return ResponseEntity.status(HttpStatus.OK).body(converterResponse(response));
     }
 
     @PutMapping("/tipo_casa/{tipoCasaId}")
     public ResponseEntity<TipoCasaResponseDto> atualizarTipoCasa(@RequestBody TipoCasaRequestDto requestDto,
-                                                                 @PathVariable(value = "tipoCasaId") String tipoCasaId,
-                                                                 @RequestHeader(value = "correlationId", required = false) String correlationId) {
-        var correlationIdVlidado = validarCorrelationId(correlationId);
+                                                                 @PathVariable(value = "tipoCasaId") String tipoCasaId) {
         var response = atualizarTipoCasa.atualizarTipoCasa(montarRequest(requestDto), tipoCasaId);
         return ResponseEntity.status(HttpStatus.CREATED).body(converterResponse(response));
     }
 
     @DeleteMapping("/tipo_casa/{tipoCasaId}")
-    public ResponseEntity<Void> deletarTipoCasa(@PathVariable(value = "tipoCasaId") String tipoCasaId,
-                                                @RequestHeader(value = "correlationId", required = false) String correlationId) {
-        var correlationIdVlidado = validarCorrelationId(correlationId);
+    public ResponseEntity<Void> deletarTipoCasa(@PathVariable(value = "tipoCasaId") String tipoCasaId) {
         deletarTipoCasa.deletarTipoCasa(tipoCasaId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-import static br.com.fiap.consumo.energia.adapter.util.ValidarCorrelationId.validarCorrelationId;
-
 @RestController
 @RequestMapping("/consumo-energia/v1")
 @RequiredArgsConstructor
@@ -23,34 +21,26 @@ public class EletrodomesticoController {
     private final IBuscarEletrodomestico buscarEletrodomestico;
 
     @PostMapping("/eletrodomestico")
-    public ResponseEntity<EletrodomesticoResponseDto> cadastrarEndereco(@RequestBody EletrodomesticoRequestDto requestDto,
-                                                                        @RequestHeader(value = "correlationId", required = false) String correlationId) {
-        var correlationIdVlidado = validarCorrelationId(correlationId);
+    public ResponseEntity<EletrodomesticoResponseDto> cadastrarEndereco(@RequestBody EletrodomesticoRequestDto requestDto) {
         var response = cadastrarEletrodomestico.cadastrarEletrodomestico(montarRequest(requestDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(converterResponse(response));
     }
 
     @GetMapping("/eletrodomestico/{eletrodomesticoId}")
-    public ResponseEntity<EletrodomesticoResponseDto> buscarCasaId(@PathVariable(value = "eletrodomesticoId") UUID eletrodomesticoId,
-                                                                   @RequestHeader(value = "correlationId", required = false) String correlationId) {
-        var correlationIdVlidado = validarCorrelationId(correlationId);
+    public ResponseEntity<EletrodomesticoResponseDto> buscarCasaId(@PathVariable(value = "eletrodomesticoId") UUID eletrodomesticoId) {
         var response = buscarEletrodomestico.buscarEletrodomestico(eletrodomesticoId);
         return ResponseEntity.status(HttpStatus.OK).body(converterResponse(response));
     }
 
     @PutMapping("/eletrodomestico/{eletrodomesticoId}")
     public ResponseEntity<EletrodomesticoResponseDto> atualizarCasa(@RequestBody EletrodomesticoRequestDto requestDto,
-                                                                    @PathVariable(value = "eletrodomesticoId") UUID eletrodomesticoId,
-                                                                    @RequestHeader(value = "correlationId", required = false) String correlationId) {
-        var correlationIdVlidado = validarCorrelationId(correlationId);
+                                                                    @PathVariable(value = "eletrodomesticoId") UUID eletrodomesticoId) {
         var response = atualizarEletrodomestico.atualizarEletrodomestico(montarRequest(requestDto), eletrodomesticoId);
         return ResponseEntity.status(HttpStatus.CREATED).body(converterResponse(response));
     }
 
     @DeleteMapping("/eletrodomestico/{eletrodomesticoId}")
-    public ResponseEntity<Void> deletarEndereco(@PathVariable(value = "eletrodomesticoId") UUID eletrodomesticoId,
-                                                @RequestHeader(value = "correlationId", required = false) String correlationId) {
-        var correlationIdVlidado = validarCorrelationId(correlationId);
+    public ResponseEntity<Void> deletarEndereco(@PathVariable(value = "eletrodomesticoId") UUID eletrodomesticoId) {
         deletarEletrodomestico.deletarEletrodomestico(eletrodomesticoId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

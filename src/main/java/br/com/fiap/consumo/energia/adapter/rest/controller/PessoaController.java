@@ -14,8 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import static br.com.fiap.consumo.energia.adapter.util.ValidarCorrelationId.validarCorrelationId;
-
 @RestController
 @RequestMapping("/consumo-energia/v1")
 @RequiredArgsConstructor
@@ -24,9 +22,7 @@ public class PessoaController {
     private final ICadastrarPessoa cadastrarPessoa;
 
     @PostMapping("/pessoa")
-    public ResponseEntity<PessoaResponseDto> cadastrarParentesco(@RequestBody PessoaRequestDto requestDto,
-                                                                 @RequestHeader(value = "correlationId") String correlationId) {
-        var correlationIdVlidado = validarCorrelationId(correlationId);
+    public ResponseEntity<PessoaResponseDto> cadastrarParentesco(@RequestBody PessoaRequestDto requestDto) {
         var response = cadastrarPessoa.cadastrarPessoa(montarRequest(requestDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(converterResponse(response));
     }

@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-import static br.com.fiap.consumo.energia.adapter.util.ValidarCorrelationId.validarCorrelationId;
-
 @RestController
 @RequestMapping("/consumo-energia/v1")
 @RequiredArgsConstructor
@@ -27,34 +25,26 @@ public class EnderecoController {
     private final IBuscarEndereco buscarEndereco;
 
     @PostMapping("/endereco")
-    public ResponseEntity<EnderecoResponseDto> cadastrarEndereco(@RequestBody EnderecoRequestDto requestDto,
-                                                                 @RequestHeader(value = "correlationId") String correlationId) {
-        var correlationIdVlidado = validarCorrelationId(correlationId);
+    public ResponseEntity<EnderecoResponseDto> cadastrarEndereco(@RequestBody EnderecoRequestDto requestDto) {
         var response = cadastrarEndereco.cadastrarEndereco(montarRequest(requestDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(converterResponse(response));
     }
 
     @GetMapping("/endereco/{enderecoId}")
-    public ResponseEntity<EnderecoResponseDto> buscarEnderecoId(@PathVariable(value = "enderecoId") UUID enderecoId,
-                                                                @RequestHeader(value = "correlationId") String correlationId) {
-        var correlationIdVlidado = validarCorrelationId(correlationId);
+    public ResponseEntity<EnderecoResponseDto> buscarEnderecoId(@PathVariable(value = "enderecoId") UUID enderecoId) {
         var endereco = buscarEndereco.buscarEndereco(enderecoId);
         return ResponseEntity.status(HttpStatus.OK).body(converterResponse(endereco));
     }
 
     @PutMapping("/endereco/{enderecoId}")
     public ResponseEntity<EnderecoResponseDto> atualizarEndereco(@RequestBody EnderecoRequestDto requestDto,
-                                                                 @PathVariable(value = "enderecoId") UUID enderecoId,
-                                                                 @RequestHeader(value = "correlationId") String correlationId) {
-        var correlationIdVlidado = validarCorrelationId(correlationId);
+                                                                 @PathVariable(value = "enderecoId") UUID enderecoId) {
         var response = atualizarEndereco.atualizarEndereco(montarRequest(requestDto), enderecoId);
         return ResponseEntity.status(HttpStatus.CREATED).body(converterResponse(response));
     }
 
     @DeleteMapping("/endereco/{enderecoId}")
-    public ResponseEntity<Void> deletarEndereco(@PathVariable(value = "enderecoId") UUID enderecoId,
-                                                @RequestHeader(value = "correlationId") String correlationId) {
-        var correlationIdVlidado = validarCorrelationId(correlationId);
+    public ResponseEntity<Void> deletarEndereco(@PathVariable(value = "enderecoId") UUID enderecoId) {
         deletarEndereco.deletarEndereco(enderecoId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

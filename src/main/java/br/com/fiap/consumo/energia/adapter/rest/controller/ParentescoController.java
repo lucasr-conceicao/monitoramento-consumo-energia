@@ -10,8 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import static br.com.fiap.consumo.energia.adapter.util.ValidarCorrelationId.validarCorrelationId;
-
 @RestController
 @RequestMapping("/consumo-energia/v1")
 @RequiredArgsConstructor
@@ -20,9 +18,7 @@ public class ParentescoController {
     private final ICadastrarParentesco cadastrarParentesco;
 
     @PostMapping("/parentesco")
-    public ResponseEntity<ParentescoResponseDto> cadastrarParentesco(@RequestBody ParentescoRequestDto requestDto,
-                                                                     @RequestHeader(value = "correlationId") String correlationId) {
-        var correlationIdVlidado = validarCorrelationId(correlationId);
+    public ResponseEntity<ParentescoResponseDto> cadastrarParentesco(@RequestBody ParentescoRequestDto requestDto) {
         var response = cadastrarParentesco.cadastrarParentesco(montarRequest(requestDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(converterResponse(response));
     }
