@@ -21,8 +21,12 @@
 - `Funcionalidade 6` <br><br>
 `API de gestão de parentesco`: A API tem como objetivo permitir o gerenciamento de informações sobre os parentescos cadastrados em nosso sistema. Para cadastrar um parentesco, deve ser informado as duas pessoas que fazem o parentesco e a descrição (ex. pai, mãe, tio, tia, avô, avó...), e não podem estar preenchidos com brancos ou nulos. Todos os campos são obrigatórios. O sistema também deve gravar os dados no sistema. Receber informações através do Controller em formato HTTP POST.
 
-## 🛠️ Modelagem utilizada para o desenvolvimento do sistema até o momento
+## 🛠️ Arquitetura utilizada
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/962b3549-c2de-47b8-89da-b09065d59ef6) <br>
+O código foi desenvolvido utilizando o clean arch (A ideia de utilizar o clean foi desenvolver o projeto na estrutura que utilizo no dia a dia no trabalho). <br>
+TODAS as APIs criadas se encontram na camada VERDE. Todas as requisições feitas pelo insomnia representam a camada AZUL. Quando nosso controller é chamada para cadastrar uma pessoa por exemplo, chamamos o Usecase na camada VERMELHA (camada esse que fica a regra de negócio.) para salvar no banco de dados, fazemos o caminho inverso atráves comunicando os pacotes através de interfaces.
 
+## 🛠️ Modelagem utilizada para o desenvolvimento do sistema até o momento
 ![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/afc0f789-f7d9-4c34-b35e-eff6e7c2486f)
 
 OBS 1. Não foi desenvolvido a entidade usuário.
