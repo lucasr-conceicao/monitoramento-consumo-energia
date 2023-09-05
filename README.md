@@ -178,20 +178,33 @@ Exemplo de saída: <br>
   "descricao": "Apartamento"
 }
 ```
+exemplo de entrada e saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/c655a9a6-b3af-4ad8-bd15-4d368f7e0c11)
+
 - `(PUT) API de atualizar tipo da casa`:
-- `Rota PUT - tipo casa`: http://localhost:8080/consumo-energia/v1/tipo_casa/4
+- `Rota PUT - tipo casa`: http://localhost:8080/consumo-energia/v1/tipo_casa/1
 ```JSON
 {
   "id_tipo_casa": "2",
   "descricao": "Studio"
 }
 ```
+exemplo de entrada e saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/55bf0033-5fb5-4f25-b44c-ba8ab862df60)
+
 - `(GET) API de buscar tipo da casa`:
-- `Rota GET - tipo casa`: http://localhost:8080/consumo-energia/v1/tipo_casa/4
+- `Rota GET - tipo casa`: http://localhost:8080/consumo-energia/v1/tipo_casa/1
+
+exemplo de saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/f1355958-4817-4b67-921d-a79116322165)
   <br>
   <br>
 - `(DELETE) API de deletar tipo da casa`:
-- `Rota DELETE - tipo casa`: http://localhost:8080/consumo-energia/v1/tipo_casa/4
+- `Rota DELETE - tipo casa`: http://localhost:8080/consumo-energia/v1/tipo_casa/1
+
+exemplo de saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/74777c04-b4ff-48ca-8e27-e72cb1a0c4a7)
+
 
 ### API Casa
 - `(POST) API de cadastro de casa`:
@@ -203,6 +216,9 @@ Exemplo de saída: <br>
   "id_pessoa": "1976a73c-e998-4663-a392-46221e81a8bb"
 }
 ```
+exemplo de entrada e saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/7a132451-b604-45e6-8f4f-c06d024ce9c3)
+
 - `(PUT) API de atualizar casa`:
 - `Rota PUT - casa`: http://localhost:8080/consumo-energia/v1/casa/d65e3601-825a-4223-8011-d3a4b831a10f
 ```JSON
@@ -212,13 +228,21 @@ Exemplo de saída: <br>
   "id_pessoa": "1976a73c-e998-4663-a392-46221e81a8bb"
 }
 ```
+exemplo de entrada e saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/5c53875c-4b6f-4d37-b688-66630ceec1d3)
+
 - `(GET) API de buscar casa`:
 - `Rota GET - casa`: http://localhost:8080/consumo-energia/v1/casa/d65e3601-825a-4223-8011-d3a4b831a10f
+
+exemplo de saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/6f39d2ce-7d9b-4911-b5e2-a39fa117b766)
   <br>
   <br>
 - `(DELETE) API de deletar casa`:
 - `Rota DELETE - casa`: http://localhost:8080/consumo-energia/v1/casa/d65e3601-825a-4223-8011-d3a4b831a10f
 
+exemplo de saída:
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/39a5a834-c10b-4538-b291-4064c579d22a)
 
 ### API Eletrodomésticos
 - `(POST) API de cadastrar de eletrodomésticos`:
@@ -230,6 +254,9 @@ Exemplo de saída: <br>
  "potencia": 110.0
 }
 ```
+exemplo de entrada e saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/ee593434-dcdb-47bb-a63b-6ff06b36146c)
+
 
 - `(PUT) API de atualizar eletrodomésticos`:
 - `Rota PUT - eletrodoméstico`: http://localhost:9080/consumo-energia/v1/eletrodomestico/6261cbbf-5b04-4ba9-b60d-a58cdbaa82c1
@@ -240,11 +267,18 @@ Exemplo de saída: <br>
  "potencia": 130.0
 }
 ```
+exemplo de entrada e saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/3aebc98b-a3b1-489c-95eb-69cd6eeeb527)
+
 - `(GET) API de buscar eletrodoméstico`:
 - `Rota GET - eletrodoméstico`: http://localhost:9080/consumo-energia/v1/eletrodomestico/6261cbbf-5b04-4ba9-b60d-a58cdbaa82c1
+
+exemplo de saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/971635dd-6963-4df3-9e88-4624109d39dc)
   <br>
   <br>
 - `(DELETE) API de deletar eletrodoméstico`:
 - `Rota DELETE - eletrodoméstico`: http://localhost:9080/consumo-energia/v1/eletrodomestico/6261cbbf-5b04-4ba9-b60d-a58cdbaa82c1
 
-
+exemplo de saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/a82f247f-2f53-451b-b716-4d38a37d3278)
