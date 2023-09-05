@@ -54,6 +54,8 @@ OBS 2. Para rodar a aplicação, esta configurado o banco H2. Na aplicação tem
  "estado": "São Paulo"
 }
 ```
+exemplo de entrada e saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/6642cc77-69e6-4b3b-9537-b3e41bfbf1cb)
 
 - `(PUT) API de atualizar endereço`:
 - `API de cadastro de endereço`: http://localhost:9080/consumo-energia/v1/endereco/70eafe16-9d34-4d2a-a817-8eb2caae1545
@@ -66,13 +68,21 @@ OBS 2. Para rodar a aplicação, esta configurado o banco H2. Na aplicação tem
  "estado": "São Paulo"
 }
 ```
+exemplo de entrada e saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/d6260abe-187e-4128-a69b-5df4436da2d3)
 
 - `(GET) API de buscar endereço`:
 - `API de cadastro de endereço`: http://localhost:9080/consumo-energia/v1/endereco/70eafe16-9d34-4d2a-a817-8eb2caae1545
+  
+exemplo de saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/910225c4-9bda-44b1-bbc7-b3e4bf64d3bc)
    <br>
    <br>
 - `(DELETE) API de deletar endereço`:
 - `API de cadastro de endereço`: http://localhost:9080/consumo-energia/v1/endereco/70eafe16-9d34-4d2a-a817-8eb2caae1545
+  
+exemplo de saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/0c37f1f7-9931-415e-a7ca-7132e87c450b)
 
 
 ### API Pessoas
@@ -88,6 +98,8 @@ OBS 2. Para rodar a aplicação, esta configurado o banco H2. Na aplicação tem
  "idade": "25"
 }
 ```
+exemplo de entrada e saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/1b9d88cf-7ef4-454c-b11d-8356ca05fc1f)
 
 - `(PUT) API de atualizar pessoas`:
 - `Rota PUT - pessoas`: http://localhost:9080/consumo-energia/v1/pessoa/c2366833-0aaf-4d29-ab35-5e729f6cbd13
@@ -101,12 +113,21 @@ OBS 2. Para rodar a aplicação, esta configurado o banco H2. Na aplicação tem
  "idade": "25"
 }
 ```
+exemplo de entrada e saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/72290c2e-47f0-4cd6-bea8-7c133d48ce15)
+
 - `(GET) API de buscar pessoa`:
 - `Rota GET - pessoas`: http://localhost:9080/consumo-energia/v1/pessoa/c2366833-0aaf-4d29-ab35-5e729f6cbd13
+
+exemplo de saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/c4335d4e-6c9b-4c58-910a-a5574f4bfa78)
   <br>
   <br>
 - `(DELETE) API de deletar pessoa`:
 - `Rota DELETE - pessoas`: http://localhost:9080/consumo-energia/v1/pessoa/c2366833-0aaf-4d29-ab35-5e729f6cbd13
+
+exemplo de saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/f6f3eed0-5529-44af-9676-dab6307d53c1)
 
 
 ### API Parentesco
@@ -119,6 +140,8 @@ OBS 2. Para rodar a aplicação, esta configurado o banco H2. Na aplicação tem
   "id_pessoa2": "c2366833-0aaf-4d29-ab35-5e729f6cbd13"
 }
 ```
+exemplo de entrada e saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/cd90a72a-65ec-4734-be27-d4840b1a4ebf)
 
 - `(PUT) API de atualizar parentesco`:
 - `Rota PUT - parentesco`: http://localhost:9080/consumo-energia/v1/parentesco/48be8a94-7070-4e75-8ff4-b901bb2a22b2
@@ -129,12 +152,21 @@ OBS 2. Para rodar a aplicação, esta configurado o banco H2. Na aplicação tem
   "id_pessoa2": "c2366833-0aaf-4d29-ab35-5e729f6cbd13"
 }
 ```
+exemplo de entrada e saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/502d5928-eae9-4372-a018-7a2a835079a7)
+
 - `(GET) API de buscar parentesco`:
 - `Rota GET - parentesco`: http://localhost:9080/consumo-energia/v1/parentesco/48be8a94-7070-4e75-8ff4-b901bb2a22b2
+
+exemplo de saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/68371d70-fdb9-4381-b7bc-6e0261aabc1c)
   <br>
   <br>
 - `(DELETE) API de deletar parentesco`:
 - `Rota DELETE - parentesco`: http://localhost:9080/consumo-energia/v1/parentesco/48be8a94-7070-4e75-8ff4-b901bb2a22b2
+
+Exemplo de saída: <br>
+![image](https://github.com/lucasr-conceicao/monitoramento-consumo-energia/assets/64719344/db4b13ba-fd10-487a-84af-4017e395cf6b)
 
 
 ### API Tipo Casa - Tabela dominio
